@@ -1,0 +1,130 @@
+﻿<Window x:Class="ShashkiWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShashkiWPF"
+        mc:Ignorable="d"
+        Width="auto"
+        Height="auto"
+        Title="MainWindow" MinWidth="1000px" MinHeight="600px">
+    <Grid Width="550px" Height="550px" Background="Purple">
+        <Grid Width="500px" Height="500px" Name="Pole_Grid">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="WhiteSmoke" Grid.Column="0" Grid.Row="0" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="0" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="0" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="0" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="8" Grid.Row="0" />
+            <Rectangle Fill="Black" Grid.Column="1" Grid.Row="0" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="3" Grid.Row="0" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="5" Grid.Row="0" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="7" Grid.Row="0" MouseLeftButtonDown="Elipse_Click"/>
+
+            <Rectangle Fill="Black" Grid.Column="0" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="2" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="4" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="6" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
+   
+            <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="1" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="1" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="1" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="7" Grid.Row="1" />
+
+            <Rectangle Fill="WhiteSmoke" Grid.Column="0" Grid.Row="2" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="2" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="2" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="2" />
+        
+            <Rectangle Fill="Black" Grid.Column="1" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="3" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="5" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="7" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
+
+            <Rectangle Fill="Black" Grid.Column="0" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="2" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="4" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="6" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
+        
+            <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="3" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="3" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="3" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="7" Grid.Row="3" />
+
+            <Rectangle Fill="WhiteSmoke" Grid.Column="0" Grid.Row="4" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="4" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="4" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="4" />
+          
+            <Rectangle Fill="Black" Grid.Column="1" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="3" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="5" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="7" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
+
+            <Rectangle Fill="Black" Grid.Column="0" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="2" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="4" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="6" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
+            
+            <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="5" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="5" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="5" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="7" Grid.Row="5" />
+
+            <Rectangle Fill="WhiteSmoke" Grid.Column="0" Grid.Row="6" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="6" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="6" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="6" />
+         
+            <Rectangle Fill="Black" Grid.Column="1" Grid.Row="6" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="3" Grid.Row="6" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="5" Grid.Row="6" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="7" Grid.Row="6" MouseLeftButtonDown="Elipse_Click" RenderTransformOrigin="0.457,0.539"/>
+
+            <Rectangle Fill="Black" Grid.Column="0" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="2" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="4" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
+            <Rectangle Fill="Black" Grid.Column="6" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
+    
+            <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="7" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="7" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="7" />
+            <Rectangle Fill="WhiteSmoke" Grid.Column="7" Grid.Row="7" />
+        </Grid>
+        <Button Content="ИГРАТЬ" HorizontalAlignment="Left" Margin="-196,25,0,0" Background="Coral" VerticalAlignment="Top" Height="50" Width="100" Click="Button_Click_Play" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="9"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Rectangle Height="50" Width="100" Fill="Blue" RenderTransformOrigin="0.525,0.538" Margin="625,37,-175,463"/>
+        <TextBlock Text="Количество:" Margin="632,50,-175,463" Foreground="White" x:Name="countBlack"/>
+        <Rectangle Height="50" Width="100" Fill="Red" RenderTransformOrigin="0.525,0.538" Margin="625,449,-175,51" />
+        <TextBlock Text="Количество:" Margin="632,461,-175,56" Foreground="White" x:Name="countWhite"/>
+        <Rectangle Height="50" Width="100" Fill="Black" RenderTransformOrigin="0.525,0.538" Margin="625,245,-175,255" />
+        <TextBlock Text="" Margin="641,258,-184,259" Foreground="White" x:Name="whoMove"/>
+    </Grid>
+</Window>
