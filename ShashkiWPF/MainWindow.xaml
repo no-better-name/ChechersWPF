@@ -8,6 +8,9 @@
         Width="auto"
         Height="auto"
         Title="MainWindow" MinWidth="1000px" MinHeight="600px">
+    <Window.Background>
+        <ImageBrush ImageSource="/back.jpg"/>
+    </Window.Background>
     <Grid Width="550px" Height="550px" Background="Purple">
         <Grid Width="500px" Height="500px" Name="Pole_Grid">
             <Grid.RowDefinitions>
@@ -44,7 +47,7 @@
             <Rectangle Fill="Black" Grid.Column="2" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="4" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="6" Grid.Row="1" MouseLeftButtonDown="Elipse_Click"/>
-   
+
             <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="1" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="1" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="1" />
@@ -54,7 +57,7 @@
             <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="2" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="2" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="2" />
-        
+
             <Rectangle Fill="Black" Grid.Column="1" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="3" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="5" Grid.Row="2" MouseLeftButtonDown="Elipse_Click"/>
@@ -64,7 +67,7 @@
             <Rectangle Fill="Black" Grid.Column="2" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="4" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="6" Grid.Row="3" MouseLeftButtonDown="Elipse_Click"/>
-        
+
             <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="3" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="3" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="3" />
@@ -74,7 +77,7 @@
             <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="4" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="4" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="4" />
-          
+
             <Rectangle Fill="Black" Grid.Column="1" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="3" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="5" Grid.Row="4" MouseLeftButtonDown="Elipse_Click"/>
@@ -84,7 +87,7 @@
             <Rectangle Fill="Black" Grid.Column="2" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="4" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="6" Grid.Row="5" MouseLeftButtonDown="Elipse_Click"/>
-            
+
             <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="5" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="5" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="5" />
@@ -94,7 +97,7 @@
             <Rectangle Fill="WhiteSmoke" Grid.Column="2" Grid.Row="6" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="4" Grid.Row="6" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="6" Grid.Row="6" />
-         
+
             <Rectangle Fill="Black" Grid.Column="1" Grid.Row="6" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="3" Grid.Row="6" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="5" Grid.Row="6" MouseLeftButtonDown="Elipse_Click"/>
@@ -104,13 +107,13 @@
             <Rectangle Fill="Black" Grid.Column="2" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="4" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
             <Rectangle Fill="Black" Grid.Column="6" Grid.Row="7" MouseLeftButtonDown="Elipse_Click"/>
-    
+
             <Rectangle Fill="WhiteSmoke" Grid.Column="1" Grid.Row="7" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="3" Grid.Row="7" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="7" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="7" Grid.Row="7" />
         </Grid>
-        <Button Content="ИГРАТЬ" HorizontalAlignment="Left" Margin="-196,25,0,0" Background="Coral" VerticalAlignment="Top" Height="50" Width="100" Click="Button_Click_Play" >
+        <Button Content="ИГРАТЬ" HorizontalAlignment="Left" Margin="-169,7,0,0" Background="Coral" VerticalAlignment="Top" Height="50" Width="100" Click="Button_Click_Play" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -120,11 +123,13 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Rectangle Height="50" Width="100" Fill="Blue" RenderTransformOrigin="0.525,0.538" Margin="625,37,-175,463"/>
-        <TextBlock Text="Количество:" Margin="632,50,-175,463" Foreground="White" x:Name="countBlack"/>
+        <Rectangle Height="50" Width="100" Fill="Blue" RenderTransformOrigin="0.525,0.538" Margin="625,7,-175,493"/>
+        <TextBlock Text="Количество:" Margin="632,19,-175,494" Foreground="White" x:Name="countBlack"/>
         <Rectangle Height="50" Width="100" Fill="Red" RenderTransformOrigin="0.525,0.538" Margin="625,449,-175,51" />
         <TextBlock Text="Количество:" Margin="632,461,-175,56" Foreground="White" x:Name="countWhite"/>
-        <Rectangle Height="50" Width="100" Fill="Black" RenderTransformOrigin="0.525,0.538" Margin="625,245,-175,255" />
+        <Rectangle Height="50" Width="100" Fill="Black" RenderTransformOrigin="0.525,0.538" Margin="625,225,-175,275"/>
         <TextBlock Text="" Margin="641,258,-184,259" Foreground="White" x:Name="whoMove"/>
+        <Rectangle   RenderTransformOrigin="0.525,0.538" Margin="-196,143,592,103" x:Name="RectangleWinner"/>
+        <TextBlock Text="" Margin="-188,274,573,229" Foreground="White" x:Name="TheWinner" FontSize="18" />
     </Grid>
 </Window>

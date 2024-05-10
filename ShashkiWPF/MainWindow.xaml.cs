@@ -22,7 +22,6 @@ namespace ShashkiWPF
     {
         private bool GameStatus = false; // переменная игрового режима false - поле пустое игра не идет true - эффект обратный;
         private bool kills = false;
-        private bool isQueen = false;
         private bool motion = false; // Кто ходит - true (синий) false (красный);
         private bool wasMove = false; // Был ли ход устанавливаем в true если был ход;
         private Point startPoint;
@@ -113,6 +112,19 @@ namespace ShashkiWPF
             }
         }
 
+        private void Winner()
+        {
+            if (ListofRed().Count() == 0)
+            {
+                TheWinner.Text = "Победа синих";
+                RectangleWinner.Fill = Blue; 
+            }
+            if (ListofBlue().Count() == 0)
+            {
+                TheWinner.Text = "Победа красных";
+                RectangleWinner.Fill = Red;
+            }
+        }
         private void MoveAccept(int? row, int? column, Ellipse el)
         {
             Ellipse ellipse_neigbore;
@@ -151,131 +163,6 @@ namespace ShashkiWPF
             }
         }
 
-        private void MoveQ(int row, int column, Ellipse el)
-        {
-            Rectangle rectangle_neigbore, rectangle_neigboreDown;
-            Ellipse ellipse_neigbore;
-            // y = \pm x + (y_1 \mp x_1)
-            for(int x=0; x<8; x++)
-            {
-                int yP = x + (row - column); // слева верх вниз вправо
-                int yM = -x + (row + column); 
-                if (yP<=7 && yP>=0)
-                {
-                    ellipse_neigbore = FindEllipseByRowAndColumn(yP , x);
-                    if (ellipse_neigbore == null)
-                    {
-                        rectangle_neigbore = FindRectangleByRowAndColumn(yP, x);
-                        rectangle_neigbore.Fill = Brown;
-                    }
-                }
-                if (yM <= 7 && yM >= 0)
-                {
-                    ellipse_neigbore = FindEllipseByRowAndColumn(yM, x);
-                    if (ellipse_neigbore == null)
-                    {
-                        rectangle_neigbore = FindRectangleByRowAndColumn(yM, x);
-                        rectangle_neigbore.Fill = Brown;
-                    }
-                }
-            }
-
-        }
-
-
-        private void MoveAcceptQ(int? row, int? column, Ellipse el)
-        {
-            Rectangle rectangle_neigboreUp, rectangle_neigboreDown;
-            Ellipse ellipse_neigboreUp, ellipse_neigboreDown;
-            int i = 1;
-            while (row - i > 0 || column - i > 0)
-            {
-                ellipse_neigboreUp = FindEllipseByRowAndColumn(row - i, column - i);
-                if (ellipse_neigboreUp != null)
-                {
-                    if (ellipse_neigboreUp.Fill == Blue && el.Fill == RedQ || ellipse_neigboreUp.Fill == Red && el.Fill == BlueQ) // ищем возможность убить и подсвечаем клетку за жертвой
-                    {
-                        if (FindEllipseByRowAndColumn(row - i - i, column - i - i) == null && IsNumberInRange((int)row - i - i, 0, 7) && IsNumberInRange((int)column - i - i, 0, 7))
-                        {
-                            rectangle_neigboreUp = FindRectangleByRowAndColumn(row - i - i, column - i - i);
-                            if (rectangle_neigboreUp != null) rectangle_neigboreUp.Fill = Brown;
-                            i++;
-                        }
-                    }
-                }
-                else if (!kills)
-                {
-                    rectangle_neigboreUp = FindRectangleByRowAndColumn(row - i, column - i);
-                    if (rectangle_neigboreUp != null && ellipse_neigboreUp == null) rectangle_neigboreUp.Fill = Brown;
-                    i++;
-                }
-                
-            }
-            while (row + i <= 7 || column + i <= 7)
-            {
-                ellipse_neigboreDown = FindEllipseByRowAndColumn(row + i, column + i);
-                if (ellipse_neigboreDown != null)
-                {
-                    if (ellipse_neigboreDown.Fill == Blue && el.Fill == RedQ || ellipse_neigboreDown.Fill == Red && el.Fill == BlueQ) // ищем возможность убить и подсвечаем клетку за жертвой
-                    {
-                        if (FindEllipseByRowAndColumn(row + i + i, column + i + i) == null && IsNumberInRange((int)row + i + i, 0, 7) && IsNumberInRange((int)column + i + i, 0, 7))
-                        {
-                            rectangle_neigboreDown = FindRectangleByRowAndColumn(row + i + i, column + i + i);
-                            if (rectangle_neigboreDown != null) rectangle_neigboreDown.Fill = Brown;
-                            i++;
-                        }
-                    }
-                }
-                else if (!kills)
-                {
-                    rectangle_neigboreDown = FindRectangleByRowAndColumn(row + i, column + i);
-                    if (rectangle_neigboreDown != null && ellipse_neigboreDown == null) rectangle_neigboreDown.Fill = Brown;
-                    i++;
-                }
-
-            }
-        }
-
-        private void CanKillQ(int row, int column, Ellipse el)
-        {
-            Ellipse ellipse_neigboreUp, ellipse_neigboreDown;
-            int i = 1;
-            while (row - i != 0 || column - i != 0)
-            {
-                ellipse_neigboreUp = FindEllipseByRowAndColumn(row - i, column - i);
-                if (ellipse_neigboreUp != null)
-                {
-                    if (ellipse_neigboreUp.Fill == Blue && el.Fill == RedQ || ellipse_neigboreUp.Fill == Red && el.Fill == BlueQ ) // если есть смотрим на ее цвет
-                    {
-                        if (FindEllipseByRowAndColumn(row - i - i, column - i - i) == null && IsNumberInRange((int)row - i - i, 0, 7) && IsNumberInRange((int)column - i - i, 0, 7)) // если цвет противоположный, то смотрим есть ли                                                                                                                                                     // за ней место и даем возможность убить
-                        {
-                            kills = true;
-                            MoveAbility(el);
-                        }
-                    }
-                }
-                i++;
-            }
-            i = 1;
-            while (row + i != 7 || column + i != 7)
-            {
-                ellipse_neigboreDown = FindEllipseByRowAndColumn(row + i, column + i);
-                if (ellipse_neigboreDown != null)
-                {
-                    if (ellipse_neigboreDown.Fill == Blue && el.Fill == RedQ || ellipse_neigboreDown.Fill == Red && el.Fill == BlueQ) // если есть смотрим на ее цвет
-                    {
-                        if (FindEllipseByRowAndColumn(row + i + i, column + i + i) == null && IsNumberInRange((int)row + i + i, 0, 7) && IsNumberInRange((int)column + i + i, 0, 7)) // если цвет противоположный, то смотрим есть ли                                                                                                                                                     // за ней место и даем возможность убить
-                        {
-                            kills = true;
-                            MoveAbility(el);
-                        }
-                    }
-                }
-                i++;
-            }
-        }
-
-
         private void HideAccept()
         {
             var ListRectangle = Pole_Grid.Children.Cast<FrameworkElement>()
@@ -283,9 +170,6 @@ namespace ShashkiWPF
                 .Cast<Rectangle>()
                 .Where(x => x.Fill == Brown)
                 .ToList();
-
-           
-
             for (int i = 0; i < ListRectangle.Count; i++)
             {
                 ListRectangle[i].Fill = Black;
@@ -300,8 +184,7 @@ namespace ShashkiWPF
                 startPoint = e.GetPosition(Pole_Grid);
                 column = (int?)(startPoint.X / (Pole_Grid.ActualWidth / Pole_Grid.ColumnDefinitions.Count));
                 row = (int?)(startPoint.Y / (Pole_Grid.ActualHeight / Pole_Grid.RowDefinitions.Count));
-                if (ellipse.Fill == BlueQ || ellipse.Fill == RedQ) { isQueen = true; MoveQ((int)row, (int)column, ellipse);} 
-                else MoveAccept(row, column, ellipse);
+                MoveAccept(row, column, ellipse);
                 ellipse.CaptureMouse();
             }
         }
@@ -342,7 +225,6 @@ namespace ShashkiWPF
                             kills = false;
                             FindandRemoveRedEl();
                             FindandRemoveBlueEl();
-                            
                             CanKill(current_row, current_column, ellipse);
                             HideAccept();
                             if (kills) return;
@@ -381,6 +263,7 @@ namespace ShashkiWPF
                 if (!kills) FindandMoveabilityRedEl();
                 FindandRemoveBlueEl();
             }
+            Winner();
             PrintMotion(motion);
             wasMove = !wasMove;
         }
