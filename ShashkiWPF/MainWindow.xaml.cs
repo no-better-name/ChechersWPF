@@ -31,7 +31,7 @@ namespace ShashkiWPF
         private SolidColorBrush Red = new SolidColorBrush(Colors.Red);
         private SolidColorBrush Brown = new SolidColorBrush(Colors.Brown);
         private SolidColorBrush Black = new SolidColorBrush(Colors.Black);
-
+        private SolidColorBrush Aqua= new SolidColorBrush(Colors.Aqua);
         private SolidColorBrush BlueQ = new SolidColorBrush(Colors.DarkBlue); // Дамки синих
         private SolidColorBrush RedQ = new SolidColorBrush(Colors.Coral); // Дамки Красных
 
@@ -78,6 +78,14 @@ namespace ShashkiWPF
         {
             return Pole_Grid.Children.Cast<FrameworkElement>().Where(x => x is Ellipse).Cast<Ellipse>().Where(x => x.Fill == Red).ToList();
         }
+        private List<Ellipse> ListofBlueQ()
+        {
+            return Pole_Grid.Children.Cast<FrameworkElement>().Where(x => x is Ellipse).Cast<Ellipse>().Where(x => x.Fill == BlueQ).ToList();
+        }
+        private List<Ellipse> ListofRedQ()
+        {
+            return Pole_Grid.Children.Cast<FrameworkElement>().Where(x => x is Ellipse).Cast<Ellipse>().Where(x => x.Fill == RedQ).ToList();
+        }
         private bool IsEllipseInListRed(Ellipse ellipseToCheck)
         {
             return ListofRed().Contains(ellipseToCheck);
@@ -85,6 +93,14 @@ namespace ShashkiWPF
         private bool IsEllipseInListBlue(Ellipse ellipseToCheck)
         {
             return ListofBlue().Contains(ellipseToCheck);
+        }
+        private bool IsEllipseInListRedQ(Ellipse ellipseToCheck)
+        {
+            return ListofRedQ().Contains(ellipseToCheck);
+        }
+        private bool IsEllipseInListBlueQ(Ellipse ellipseToCheck)
+        {
+            return ListofBlueQ().Contains(ellipseToCheck);
         }
 
         private void CanKill(int rows, int columns, Ellipse el)
@@ -117,12 +133,18 @@ namespace ShashkiWPF
             if (ListofRed().Count() == 0)
             {
                 TheWinner.Text = "Победа синих";
-                RectangleWinner.Fill = Blue; 
+                RectangleWinner.Fill = Blue;
+                GameStatus = false;
+                Play.Content = "ЕЩЕ РАЗ";
+                Play.Background = Aqua;
             }
             if (ListofBlue().Count() == 0)
             {
                 TheWinner.Text = "Победа красных";
                 RectangleWinner.Fill = Red;
+                GameStatus = false;
+                Play.Content = "ЕЩЕ РАЗ";
+                Play.Background = Aqua;
             }
         }
         private void MoveAccept(int? row, int? column, Ellipse el)
@@ -155,6 +177,10 @@ namespace ShashkiWPF
                             rectangle_neigbore.Fill = Brown;
                         }
                         else if (IsEllipseInListBlue(el) && row<row+i)
+                        {
+                            rectangle_neigbore.Fill = Brown;
+                        }
+                        else if (IsEllipseInListBlueQ(el)||IsEllipseInListRedQ(el))
                         {
                             rectangle_neigbore.Fill = Brown;
                         }
@@ -348,13 +374,28 @@ namespace ShashkiWPF
         {
             if (!GameStatus)
             {
-                GameStatus = true;
                 FillField();
+                GameStatus = true;
             }
+            motion = false;
+            Surrender.Opacity = 1;
             PrintCount(ListofRed().Count(), ListofBlue().Count());
             PrintMotion(motion);
         }
-
+        private void Button_Surrender(object sender, RoutedEventArgs e)
+        {
+            if (GameStatus) {
+                var all = Pole_Grid.Children.Cast<FrameworkElement>().Where(x => x is Ellipse).Cast<Ellipse>().ToList();
+                foreach (var item in all)
+                {
+                    Pole_Grid.Children.Remove(item);
+                }
+                
+                PrintCount(ListofRed().Count(), ListofBlue().Count());
+                if (motion) motion = true;
+                GameStatus = false;
+            }
+        }
     }
 }
 

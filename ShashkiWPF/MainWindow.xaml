@@ -113,7 +113,7 @@
             <Rectangle Fill="WhiteSmoke" Grid.Column="5" Grid.Row="7" />
             <Rectangle Fill="WhiteSmoke" Grid.Column="7" Grid.Row="7" />
         </Grid>
-        <Button Content="ИГРАТЬ" HorizontalAlignment="Left" Margin="-169,7,0,0" Background="Coral" VerticalAlignment="Top" Height="50" Width="100" Click="Button_Click_Play" >
+        <Button Content="ИГРАТЬ" HorizontalAlignment="Left" Margin="-169,7,0,0" Background="Coral" VerticalAlignment="Top" Height="50" Width="100" Click="Button_Click_Play" x:Name="Play">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -128,8 +128,19 @@
         <Rectangle Height="50" Width="100" Fill="Red" RenderTransformOrigin="0.525,0.538" Margin="625,449,-175,51" />
         <TextBlock Text="Количество:" Margin="632,461,-175,56" Foreground="White" x:Name="countWhite"/>
         <Rectangle Height="50" Width="100" Fill="Black" RenderTransformOrigin="0.525,0.538" Margin="625,225,-175,275"/>
-        <TextBlock Text="" Margin="641,258,-184,259" Foreground="White" x:Name="whoMove"/>
-        <Rectangle   RenderTransformOrigin="0.525,0.538" Margin="-196,143,592,103" x:Name="RectangleWinner"/>
+        <TextBlock Text="" Margin="632,237,-175,280" Foreground="White" x:Name="whoMove"/>
+        <Rectangle RenderTransformOrigin="0.525,0.538" Margin="-198,204,573,160" x:Name="RectangleWinner"/>
         <TextBlock Text="" Margin="-188,274,573,229" Foreground="White" x:Name="TheWinner" FontSize="18" />
+      
+        <Button Content="СДАТЬСЯ:(" HorizontalAlignment="Left" Margin="-169,477,0,0" Background="#FFE2ED14" VerticalAlignment="Top" Height="50" Width="100"  Foreground="Black" Opacity="0" x:Name="Surrender" Click="Button_Surrender">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="9"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
